@@ -4,6 +4,14 @@ const { rpc } = require('../lib/cron');
 const TX = require('../model/tx');
 const UTXO = require('../model/utxo');
 
+function hexToString(hexx) {
+  var hex = hexx.toString()//force conversion
+  var str = ''
+  for (var i = 0; (i < hex.length && hex.substr(i, 2) !== '00'); i += 2)
+    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+  return str
+}
+
 /**
  * Process the inputs for the tx.
  * @param {Object} rpctx The rpc tx object.
@@ -43,13 +51,20 @@ async function vout(rpctx, blockHeight) {
   if (rpctx.vout) {
     const utxo = [];
     rpctx.vout.forEach((vout) => {
-      if (vout.value <= 0) {
-        return;
+      var address;
+      if (vout.scriptPubKey.type == 'nulldata') {
+        address = "OP_RETURN "+hexToString(vout.scriptPubKey.asm.substring(10))
+      }else if (vout.scriptPubKey.type == 'zerocoinmint') {
+        address = 'ZERO_COIN_MINT'
+      } else if (vout.scriptPubKey.type == 'nonstandard') {
+        address = 'NON_STANDARD'
+      } else {
+        address = vout.scriptPubKey.addresses[0]
       }
 
       const to = {
         blockHeight,
-        address: vout.scriptPubKey.addresses[0],
+        address: address,
         n: vout.n,
         value: vout.value
       };

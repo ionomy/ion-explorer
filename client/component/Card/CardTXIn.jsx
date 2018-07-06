@@ -35,7 +35,7 @@ export default class CardTXIn extends Component {
           ...tx,
           address: tx.address
             ? (<Link to={ `/address/${ tx.address }` }>{ tx.address }</Link>)
-            : tx.coinbase ? 'COINBASE' : 'Unknown',
+            : tx.coinbase ? 'COINBASE' : tx.coinstake?'POS':'Unknown',
           value: tx.value
             ? (
                 <span className="badge badge-danger">
