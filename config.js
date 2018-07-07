@@ -5,7 +5,7 @@
 const config = {
   'api': {
     'host': 'http://explorer2.wagerr.com',
-    'port': '80',
+    'port': '8087',
     'prefix': '/api',
     'timeout': '5s'
   },
