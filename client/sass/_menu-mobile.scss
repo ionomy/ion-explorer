@@ -24,7 +24,7 @@
 	}
 
 	&__search-wrapper {
-		background: rgb(41, 77, 234);
+		background: $wgreen;
 		display: flex;
 		align-items: center;
 		flex-direction: row;
@@ -52,7 +52,7 @@
 		width: 95%;
 
 		&:hover {
-			color: $blue;
+			color: $wgreen;
 			text-decoration: none;
 		}
 
