@@ -27,8 +27,8 @@ class Footer extends Component {
         <div className="footer__block">
           <img className="footer__logo" src="/img/footerlogo.svg" />
           <span className="footer__legal">
-            <div>Copyright &copy; 2018 <a href="https://wagerr.com/">Wagerr</a></div>
-            <div>Site design / Logo &copy; 2018 <a href="https://wagerr.com/">Wagerr</a></div>
+            <div>Copyright &copy; 2018 <a href="https://slate.io/">Slate</a></div>
+            <div>Site design / Logo &copy; 2018 <a href="https://slate.io/">Slate</a></div>
           </span>
         </div>
         <div className="footer__block">
@@ -54,25 +54,22 @@ class Footer extends Component {
           <div className="footer__social-media-wrapper">
             <div className="footer__social-title">Social Media</div>
             <div>
-              <a href="https://bitcointalk.org/index.php?topic=1911583.0" target="_blank">
+              <a href="https://bitcointalk.org/index.php?topic=3399383.0" target="_blank">
                 <Icon name="bitcoin" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://discord.gg/vvvvDbv" target="_blank">
+              <a href="https://discordapp.com/invite/ENuwHH5" target="_blank">
                 <Icon name="discord" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://t.me/wagerrcoin" target="_blank">
+              <a href="https://t.me/Slate" target="_blank">
                 <Icon name="telegram" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://www.reddit.com/r/Wagerr/" target="_blank">
-                <Icon name="reddit" className="fab footer__social-media-icon" />
-              </a>
-              <a href="https://github.com/wagerr" target="_blank">
+              <a href="https://github.com/slatecurrency" target="_blank">
                 <Icon name="github" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://twitter.com/wagerrx" target="_blank">
+              <a href="https://twitter.com/slatecurrency" target="_blank">
                 <Icon name="twitter" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://www.facebook.com/wagerr/" target="_blank">
+              <a href="https://www.facebook.com/slatecurrency" target="_blank">
                 <Icon name="facebook" className="fab footer__social-media-icon" />
               </a>
             </div>

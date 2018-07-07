@@ -39,7 +39,7 @@
 			color: $gray;
 
 			&:hover {
-				color: $wgreen;
+				color: $sgray;
 			}
 		}
 	}
@@ -51,13 +51,13 @@
 			color: $gray-dark;
 
 			&:hover {
-				color: $wgreen;
+				color: $sgray;
 			}
 		}
 	}
 
 	th {
-		background-color: $wgreen;
+		background-color: $sgray;
 		color: $white;
 		font-size: 16px;
 		min-width: 100px;
