@@ -15,7 +15,7 @@ const CardEarnings = ({ coin }) => {
 
   const nbtc = v => numeral(v).format('0,0.0000');
   const nusd = v => numeral(v).format('$0,0.00');
-
+  
   return (
     <Card title="Estimated Earnings (COIN/BTC/USD)">
       <div className="row">
@@ -23,7 +23,7 @@ const CardEarnings = ({ coin }) => {
           DAILY
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(day) } BWK / { nbtc(day * coin.btc) } BTC / { nusd(day * coin.usd) } USD
+          { nbtc(day) } WGR / { nbtc(day * coin.btc) } BTC / { nusd(day * coin.usd) } USD
         </div>
       </div>
       <div className="row">
@@ -31,7 +31,7 @@ const CardEarnings = ({ coin }) => {
           WEEKLY
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(week) } BWK / { nbtc(week * coin.btc) } BTC / { nusd(week * coin.usd) } USD
+          { nbtc(week) } WGR / { nbtc(week * coin.btc) } BTC / { nusd(week * coin.usd) } USD
         </div>
       </div>
       <div className="row">
@@ -39,7 +39,7 @@ const CardEarnings = ({ coin }) => {
           MONTHLY
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(month) } BWK / { nbtc(month * coin.btc) } BTC / { nusd(month * coin.usd) } USD
+          { nbtc(month) } WGR / { nbtc(month * coin.btc) } BTC / { nusd(month * coin.usd) } USD
         </div>
       </div>
       <div className="row">
@@ -47,7 +47,7 @@ const CardEarnings = ({ coin }) => {
           YEARLY
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(year) } BWK / { nbtc(year * coin.btc) } BTC / { nusd(year * coin.usd) } USD
+          { nbtc(year) } WGR / { nbtc(year * coin.btc) } BTC / { nusd(year * coin.usd) } USD
         </div>
       </div>
       <div className="row">
