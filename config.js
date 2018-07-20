@@ -4,7 +4,7 @@
  */
 const config = {
   'api': {
-    'host': 'http://explorer.slate.io',
+    'host': 'https://explorer.slate.io',
     'port': '8087',
     'prefix': '/api',
     'timeout': '5s'
