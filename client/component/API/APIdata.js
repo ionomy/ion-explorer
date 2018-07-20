@@ -59,11 +59,6 @@ const APIdata = [
           path: '/api/supply'
         },
         {
-          name: 'getTop100',
-          info: 'Returns top 100',
-          path: '/api/top100'
-        },
-        {
           name: 'getTXs',
           info: 'Returns transaction information.',
           path: '/api/tx'
