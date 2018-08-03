@@ -70,7 +70,7 @@ class TX extends Component {
           </div>
           <div className="col">
             <HorizontalRule title="Recipients" />
-            <CardTXOut txs={ this.state.tx.vout } />
+            <CardTXOut tx={ this.state.tx } />
           </div>
         </div>
       </div>
