@@ -26,21 +26,32 @@ async function syncPeer() {
     }
 
     const url = `${ config.freegeoip.api }${ parts[0] }`;
-    let geoip = await fetch(url);
-
-    const p = new Peer({
-      _id: parts[0],
-      country: geoip.country.name,
-      countryCode: geoip.country.code,
-      createdAt: date,
-      ip: parts[0],
-      lat: geoip.location.latitude,
-      lon: geoip.location.longitude,
-      port: parts[1] ? parts[1] : 0,
-      subver: peer.subver?peer.subver:'Unknown',
-      timeZone: geoip.location.time_zone,
-      ver: peer.version
-    });
+    let p;
+    try {
+      let geoip = await fetch(url);
+      p = new Peer({
+        _id: parts[0],
+        country: geoip.country.name,
+        countryCode: geoip.country.code,
+        createdAt: date,
+        ip: parts[0],
+        lat: geoip.location.latitude,
+        lon: geoip.location.longitude,
+        port: parts[1] ? parts[1] : 0,
+        subver: peer.subver?peer.subver:'Unknown',
+        timeZone: geoip.location.time_zone,
+        ver: peer.version
+      });
+    }catch (e) {
+      p = new Peer({
+        _id: parts[0],
+        createdAt: date,
+        ip: parts[0],
+        port: parts[1] ? parts[1] : 0,
+        subver: peer.subver?peer.subver:'Unknown',
+        ver: peer.version
+      });
+    }
 
     inserts.push(p);
   });
