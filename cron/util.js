@@ -22,11 +22,16 @@ async function vin(rpctx) {
   if (rpctx.vin) {
     const txIds = new Set();
     rpctx.vin.forEach((vin) => {
+      let isZcSpend = false
+      if (vin.scriptSig){
+        isZcSpend = vin.scriptSig.asm === "OP_ZEROCOINSPEND"
+      }
       txin.push({
         coinbase: vin.coinbase,
         sequence: vin.sequence,
         txId: vin.txid,
-        vout: vin.vout
+        vout: vin.vout,
+        isZcSpend: isZcSpend
       });
 
       txIds.add(`${ vin.txid }:${ vin.vout }`);
