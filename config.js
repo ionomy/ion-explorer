@@ -21,7 +21,7 @@ const config = {
     'pass': 'slate'
   },
   'freegeoip': {
-    'api': 'http://geoip.nekudo.com/api/'
+    'api': 'https://extreme-ip-lookup.com/json/'
   },
   'rpc': {
     'host': '127.0.0.1',

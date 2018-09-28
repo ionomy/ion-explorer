@@ -18,44 +18,38 @@ async function syncPeer() {
   const date = moment().utc().startOf('minute').toDate();
 
   const peers = await rpc.call('getpeerinfo');
-  const inserts = [];
+  let inserts = [];
   await forEach(peers, async (peer) => {
     const parts = peer.addr.split(':');
     if (parts[0].substr(0, 1) === '[') {
       return;
     }
 
-    const url = `${ config.freegeoip.api }${ parts[0] }`;
-    let p;
-    try {
-      let geoip = await fetch(url);
-      p = new Peer({
-        _id: parts[0],
-        country: geoip.country.name,
-        countryCode: geoip.country.code,
-        createdAt: date,
-        ip: parts[0],
-        lat: geoip.location.latitude,
-        lon: geoip.location.longitude,
-        port: parts[1] ? parts[1] : 0,
-        subver: peer.subver?peer.subver:'Unknown',
-        timeZone: geoip.location.time_zone,
-        ver: peer.version
-      });
-    }catch (e) {
-      p = new Peer({
-        _id: parts[0],
-        createdAt: date,
-        ip: parts[0],
-        port: parts[1] ? parts[1] : 0,
-        subver: peer.subver?peer.subver:'Unknown',
-        ver: peer.version
-      });
+    if (!peer.subver) {
+      return
     }
+
+    const url = `${ config.freegeoip.api }${ parts[0] }`;
+    let geoip = await fetch(url);
+
+    const p = new Peer({
+      _id: parts[0],
+      country: geoip.country,
+      countryCode: geoip.countryCode,
+      createdAt: date,
+      ip: parts[0],
+      lat: geoip.lat,
+      lon: geoip.lon,
+      port: parts[1] ? parts[1] : 0,
+      subver: peer.subver,
+      timeZone: geoip.region,
+      ver: peer.version
+    });
 
     inserts.push(p);
   });
 
+  inserts =  _.uniqBy(inserts, '_id');
   if (inserts.length) {
     await Peer.remove({});
     await Peer.insertMany(inserts);
