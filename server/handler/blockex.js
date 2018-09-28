@@ -388,7 +388,7 @@ const getSupply = async (req, res) => {
 
     const info = await rpc.call('getinfo');
 
-    t = utxo[0].total + info.zSLXsupply.total;
+    t = utxo[0].total + info.zOBSRsupply.total;
     c = t;
 
     res.json({ c, t });

@@ -63,7 +63,7 @@ export default class CardAddress extends Component {
                 Sent:
               </span>
               <span className="card__result">
-                -{ numeral(this.props.sent).format('0,0.0000') } WGR
+                -{ numeral(this.props.sent).format('0,0.0000') } OBSR
               </span>
             </div>
             <div className="card__row">
@@ -71,7 +71,7 @@ export default class CardAddress extends Component {
                 Staked:
               </span>
               <span className="card__result">
-                { numeral(this.props.staked).format('0,0.0000') } WGR
+                { numeral(this.props.staked).format('0,0.0000') } OBSR
               </span>
             </div>
             <div className="card__row">
@@ -79,7 +79,7 @@ export default class CardAddress extends Component {
                 Received:
               </span>
               <span className="card__result">
-                +{ numeral(this.props.received).format('0,0.0000') } WGR
+                +{ numeral(this.props.received).format('0,0.0000') } OBSR
               </span>
             </div>
             <div className="card__row">
@@ -87,7 +87,7 @@ export default class CardAddress extends Component {
                 Balance:
               </span>
               <span className="card__result">
-                { numeral(this.props.balance).format('0,0.0000') } WGR
+                { numeral(this.props.balance).format('0,0.0000') } OBSR
               </span>
             </div>
           </div>

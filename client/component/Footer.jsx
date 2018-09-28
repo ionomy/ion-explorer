@@ -27,9 +27,9 @@ class Footer extends Component {
         <div className="footer__block">
           <img className="footer__logo" src="/img/footerlogo.svg" />
           <span className="footer__legal">
-            <div>Copyright &copy; 2018 <a href="https://slate.io/">Slate</a></div>
+            <div>Copyright &copy; 2018 <a href="https://obsr.org/">OBSR</a></div>
             <div>Site design&copy; 2018 <a href="https://bulwarkcrypto.com/">Bulwark Cryptocurrency</a></div>
-            <div>Logo &copy; 2018 <a href="https://slate.io/">Slate</a></div>
+            <div>Logo &copy; 2018 <a href="https://obsr.org/">OBSR</a></div>
           </span>
         </div>
         <div className="footer__block">
@@ -55,22 +55,16 @@ class Footer extends Component {
           <div className="footer__social-media-wrapper">
             <div className="footer__social-title">Social Media</div>
             <div>
-              <a href="https://bitcointalk.org/index.php?topic=3399383.0" target="_blank">
-                <Icon name="bitcoin" className="fab footer__social-media-icon" />
-              </a>
-              <a href="https://discordapp.com/invite/ENuwHH5" target="_blank">
-                <Icon name="discord" className="fab footer__social-media-icon" />
-              </a>
-              <a href="https://t.me/Slate" target="_blank">
+              <a href="https://t.me/observer_official" target="_blank">
                 <Icon name="telegram" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://github.com/slatecurrency" target="_blank">
+              <a href="https://github.com/observernet" target="_blank">
                 <Icon name="github" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://twitter.com/slatecurrency" target="_blank">
+              <a href="https://twitter.com/observerfounda1" target="_blank">
                 <Icon name="twitter" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://www.facebook.com/slatecurrency" target="_blank">
+              <a href="https://www.facebook.com/Observer-Foundation-172553103444990/" target="_blank">
                 <Icon name="facebook" className="fab footer__social-media-icon" />
               </a>
             </div>
