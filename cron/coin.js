@@ -7,6 +7,7 @@ const locker = require('../lib/locker');
 const moment = require('moment');
 // Models.
 const Coin = require('../model/coin');
+const UTXO = require('../model/utxo');
 
 /**
  * Get the coin related information including things
@@ -20,7 +21,11 @@ async function syncCoin() {
   const info = await rpc.call('getinfo');
   const masternodes = await rpc.call('getmasternodecount');
   const nethashps = await rpc.call('getnetworkhashps');
-
+  const utxo = await UTXO.aggregate([
+    {$match: {address: {$ne: 'ZERO_COIN_MINT'}}},
+    {$match: {address: {$not: /OP_RETURN/}}},
+    {$group: {_id: 'supply', total: {$sum: '$value'}}}
+  ])
   // let market = await fetch(url);
   // if (Array.isArray(market)) {
   //   market = market.length ? market[0] : {};
@@ -43,7 +48,7 @@ async function syncCoin() {
     netHash: nethashps,
     peers: info.connections,
     status: 'Online',
-    supply: market.available_supply, // TODO: change to actual count from db.
+    supply: utxo[0].total + info.zSLXsupply.total,
     usd: market.price_usd
   });
 
