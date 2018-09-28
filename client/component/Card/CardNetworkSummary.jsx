@@ -25,14 +25,13 @@ export default class CardNetworkSummary extends Component {
   };
 
   render() {
-    const labels = ['H', 'kH', 'MH', 'GH', 'TH'];
+    const labels = ['H', 'kH', 'MH', 'GH', 'TH', 'PH'];
     let hash = this.props.hashps;
     let idx = 0;
     while (hash > 1000) {
       hash = hash / 1000;
       idx++;
     }
-
     return (
       <div className="animated fadeInUp">
       <Card
