@@ -22,23 +22,45 @@ const getAddress = async (req, res) => {
   try {
     const txs = await TX
       .aggregate([
-        { $match: { 'vout.address': req.params.hash } },
-        { $sort: { blockHeight: -1 } }
+        {$match: {$or: [{'vout.address': req.params.hash},{'vin.address': req.params.hash}]}},
+        {$sort: {blockHeight: -1}}
       ])
       .allowDiskUse(true)
-      .exec();
-    const utxo = await UTXO
-      .aggregate([
-          { $match: { address: req.params.hash } },
-          { $sort: { blockHeight: -1 } }
-      ])
-      .allowDiskUse(true)
-      .exec();
+      .exec()
 
-    const balance = utxo.reduce((acc, tx) => acc + tx.value, 0.0);
-    const received = txs.reduce((acc, tx) => acc + tx.vout.reduce((a, t) => a + t.value, 0.0), 0.0);
+    const sent = txs.filter(tx => tx.vout[0].address !== 'NON_STANDARD')
+      .reduce((acc, tx) => acc + tx.vin.reduce((a, t) => {
+        if (t.address === req.params.hash) {
+          return a + t.value
+        } else {
+          return a
+        }
+      }, 0.0), 0.0)
 
-    res.json({ balance, received, txs, utxo });
+    const received = txs.filter(tx => tx.vout[0].address !== 'NON_STANDARD')
+      .reduce((acc, tx) => acc + tx.vout.reduce((a, t) => {
+        if (t.address === req.params.hash) {
+          return a + t.value
+        } else {
+          return a
+        }
+      }, 0.0), 0.0)
+
+    const staked = txs.filter(tx => tx.vout[0].address === 'NON_STANDARD').reduce((acc, tx) => acc - tx.vin.reduce((a, t) => {
+      if (t.address === req.params.hash) {
+        return a + t.value
+      } else {
+        return a
+      }
+    }, 0.0) + tx.vout.reduce((a, t) => {
+      if (t.address === req.params.hash) {
+        return a + t.value
+      } else {
+        return a
+      }
+    }, 0.0), 0.0)
+
+    res.json({balance:(received + staked - sent), sent, staked, received, txs });
   } catch(err) {
     console.log(err);
     res.status(500).send(err.message || err);
@@ -360,10 +382,13 @@ const getSupply = async (req, res) => {
     let t = 0; // Total supply.
 
     const utxo = await UTXO.aggregate([
+      {$match: {address: {$ne: 'ZERO_COIN_MINT'}}},
       { $group: { _id: 'supply', total: { $sum: '$value' } } }
     ]);
 
-    t = utxo[0].total;
+    const info = await rpc.call('getinfo');
+
+    t = utxo[0].total + info.zSLXsupply.total;
     c = t;
 
     res.json({ c, t });

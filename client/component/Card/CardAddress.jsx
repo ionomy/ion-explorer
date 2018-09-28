@@ -1,6 +1,5 @@
 
 import Component from '../../core/Component';
-import { dateFormat } from '../../../lib/date';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
 import qrcode from 'qrcode';
@@ -11,8 +10,9 @@ export default class CardAddress extends Component {
     address: '',
     balance: 0.0,
     received: 0.0,
-    txs: [],
-    utxo: []
+    sent: 0.0,
+    staked: 0.0,
+    txs: []
   };
 
   static propTypes = {
@@ -20,7 +20,6 @@ export default class CardAddress extends Component {
     balance: PropTypes.number.isRequired,
     received: PropTypes.number.isRequired,
     txs: PropTypes.array.isRequired,
-    utxo: PropTypes.array.isRequired
   };
 
   componentDidMount() {
@@ -64,7 +63,15 @@ export default class CardAddress extends Component {
                 Sent:
               </span>
               <span className="card__result">
-                -{ numeral(this.props.received - this.props.balance).format('0,0.0000') } SLX
+                -{ numeral(this.props.sent).format('0,0.0000') } WGR
+              </span>
+            </div>
+            <div className="card__row">
+              <span className="card__label">
+                Staked:
+              </span>
+              <span className="card__result">
+                { numeral(this.props.staked).format('0,0.0000') } WGR
               </span>
             </div>
             <div className="card__row">
@@ -72,7 +79,7 @@ export default class CardAddress extends Component {
                 Received:
               </span>
               <span className="card__result">
-                +{ numeral(this.props.received).format('0,0.0000') } SLX
+                +{ numeral(this.props.received).format('0,0.0000') } WGR
               </span>
             </div>
             <div className="card__row">
@@ -80,7 +87,7 @@ export default class CardAddress extends Component {
                 Balance:
               </span>
               <span className="card__result">
-                { numeral(this.props.balance).format('0,0.0000') } SLX
+                { numeral(this.props.balance).format('0,0.0000') } WGR
               </span>
             </div>
           </div>

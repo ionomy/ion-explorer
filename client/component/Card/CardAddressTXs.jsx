@@ -1,6 +1,6 @@
 
 import Component from '../../core/Component';
-import { dateFormat } from '../../../lib/date';
+import { date24Format } from '../../../lib/date';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
@@ -11,14 +11,12 @@ import Table from '../Table';
 export default class CardAddressTXs extends Component {
   static defaultProps = {
     address: '',
-    txs: [],
-    utxo: []
+    txs: []
   };
 
   static propTypes = {
     address: PropTypes.string.isRequired,
-    txs: PropTypes.array.isRequired,
-    utxo: PropTypes.array.isRequired
+    txs: PropTypes.array.isRequired
   };
 
   constructor(props) {
@@ -33,33 +31,34 @@ export default class CardAddressTXs extends Component {
   };
 
   render() {
-    const spentTXs = new Set(
-      this.props.utxo.map(tx => `${ tx.txId }:${ tx.n }`)
-    );
-
     return (
       <div className="animated fadeIn">
       <Table
         cols={ this.state.cols }
         data={ this.props.txs.map((tx) => {
-          let amount = 0.0;
-          let isSpent = false;
-          tx.vout.forEach((vout) => {
-            if (vout.address === this.props.address) {
-              amount += vout.value;
-              isSpent = !spentTXs.has(`${ tx.txId }:${ vout.n }`);
+          let inAmount = 0.0;
+          let outAmount = 0.0;
+          tx.vin.forEach((vin) => {
+            if (vin.address && vin.address === this.props.address) {
+              inAmount += vin.value;
             }
           });
-
+          tx.vout.forEach((vout) => {
+            if (vout.address === this.props.address) {
+              outAmount += vout.value;
+            }
+          });
+          let isSpent = inAmount > outAmount
+          let amount = outAmount - inAmount
           return ({
             ...tx,
             amount: (
               <span
                 className={ `badge badge-${ isSpent ? 'danger' : 'success' }` }>
-                { isSpent ? '-' : ''}{ numeral(amount).format('0,0.0000') } SLX
+                { numeral(amount).format('0,0.0000') } WGR
               </span>
             ),
-            createdAt: dateFormat(tx.createdAt),
+            createdAt: date24Format(tx.createdAt),
             txId: (
               <Link to={ `/tx/${ tx.txId }` }>{ tx.txId }</Link>
             )
