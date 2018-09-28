@@ -1,4 +1,4 @@
-
+const _ = require('lodash')
 require('babel-polyfill');
 require('../lib/cron');
 const config = require('../config');
