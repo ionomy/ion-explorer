@@ -20,7 +20,7 @@ export default class MenuDesktop extends Component {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: true
     }
   }
 
@@ -56,7 +56,7 @@ export default class MenuDesktop extends Component {
       <div className={ `menu-desktop ${ this.state.isOpen ? 'menu-desktop--open' : 'menu-desktop--close' }` }>
         <div className="menu-desktop__content-wrapper">
           <div className="menu-desktop__header">
-           <span className="menu-desktop__logo" >OBSR</span>
+            <img src="/img/whitelogo.png" className="menu-desktop__logo" />
             <a onClick={ this.handleToggle } >
               <Icon name="bars" className="menu-desktop__toggle" onClick={ this.handleToggle } />
             </a>
