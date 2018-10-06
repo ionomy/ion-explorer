@@ -13,7 +13,8 @@ export default class CardStatus extends Component {
     avgMNTime: 24,
     blocks: 0,
     peers: 0,
-    status: 'Offline'
+    status: 'Offline',
+    supply: 0
   };
 
   static propTypes = {
@@ -21,7 +22,8 @@ export default class CardStatus extends Component {
     avgMNTime: PropTypes.number.isRequired,
     blocks: PropTypes.number.isRequired,
     peers: PropTypes.number.isRequired,
-    status: PropTypes.string.isRequired
+    status: PropTypes.string.isRequired,
+    supply: PropTypes.number.isRequired
   };
 
   render() {
@@ -50,6 +52,18 @@ export default class CardStatus extends Component {
                   start={ 0 } />
               </b>
             </Link>
+          </span>
+        </div>
+        <div className="card__row">
+          <span className="card__label">Total Supply:</span>
+          <span className="card__result">
+              <b>
+                <CountUp
+                  decimals={ 4 }
+                  duration={ 1 }
+                  end={ this.props.supply }
+                  start={ 0 } />
+              </b>
           </span>
         </div>
         <div className="card__row">
