@@ -4,7 +4,7 @@
  */
 const config = {
   'api': {
-    'host': 'https://explorer.obsr.xyz',
+    'host': 'https://explorer.obsr.org',
     'port': '8087',
     'prefix': '/api',
     'timeout': '10s'
