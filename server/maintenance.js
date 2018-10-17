@@ -15,7 +15,7 @@ app.use((req, res) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>OBSR Explorer</title>
+        <title>ION Explorer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css.maps" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
@@ -85,8 +85,8 @@ a {
     <div class="container">
         <img src="https://media.giphy.com/media/vIDsZm5DMZ5Ha/giphy.gif" title="Sad Explorer."/>
       <h1>Maintenance</h1>
-      <p>OBSR Explorer is not available at this moment.<br/>Please check back later.</p><br/>
-  <a href="https://obsr.org/" class="button">Back to Main</a>
+      <p>ION Explorer is not available at this moment.<br/>Please check back later.</p><br/>
+  <a href="https://ionchain.com/" class="button">Back to Main</a>
       </div>
   </body>
 </html>

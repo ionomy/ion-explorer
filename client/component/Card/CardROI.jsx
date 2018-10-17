@@ -32,7 +32,7 @@ const CardROI = ({ coin }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral(coin.supply ? coin.supply : 0.0).format('0,0.0000') } OBSR
+          { numeral(coin.supply ? coin.supply : 0.0).format('0,0.0000') } ION
         </div>
         <div className="h5">
           Coin Supply (Total)
@@ -40,7 +40,7 @@ const CardROI = ({ coin }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral(coin.supply ? coin.supply - (mns * mncoins) : 0.0).format('0,0.0000') } OBSR
+          { numeral(coin.supply ? coin.supply - (mns * mncoins) : 0.0).format('0,0.0000') } ION
         </div>
         <div className="h5">
           Coin Supply (Circulating)
@@ -64,7 +64,7 @@ const CardROI = ({ coin }) => {
       </div>
       <div className="mb-5">
         <div className="h3">
-          { numeral(mns * mncoins).format('0,0.0000') } OBSR
+          { numeral(mns * mncoins).format('0,0.0000') } ION
         </div>
         <div className="h5">
           Coins Locked
