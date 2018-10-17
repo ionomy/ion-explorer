@@ -4,7 +4,7 @@
  */
 const config = {
   'api': {
-    'host': 'https://explorer.ionchain.com',
+    'host': 'https://ionchain.com',
     'port': '8087',
     'prefix': '/api',
     'timeout': '10s'
