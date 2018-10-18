@@ -5,7 +5,7 @@ import Card from './Card';
 
 const CardLinks = () => (
   <Card title="Links">
-    <a href="https://ionchain.com/" target="_blank">Website</a><br />
+    <a href="https://ionomy.com/" target="_blank">Website</a><br />
     <a href="https://discord.gg/vuZn7gC" target="_blank">Discord</a><br />
     <a href="https://github.com/ionomy" target="_blank">Github</a><br />
     <a href="https://t.me/ionomy" target="_blank">Telegram</a><br />
