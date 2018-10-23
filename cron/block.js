@@ -9,6 +9,7 @@ const util = require('./util');
 const Block = require('../model/block');
 const TX = require('../model/tx');
 const UTXO = require('../model/utxo');
+const STXO = require('../model/stxo');
 
 /**
  * Process the blocks and transactions.
