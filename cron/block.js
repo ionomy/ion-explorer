@@ -20,6 +20,7 @@ async function syncBlocks(start, stop, clean = false) {
     await Block.remove({ height: { $gte: start, $lte: stop } });
     await TX.remove({ blockHeight: { $gte: start, $lte: stop } });
     await UTXO.remove({ blockHeight: { $gte: start, $lte: stop } });
+    await STXO.remove({ blockHeight: { $gte: start, $lte: stop } });
   }
 
   for(let height = start; height <= stop; height++) {
