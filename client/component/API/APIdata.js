@@ -54,6 +54,16 @@ const APIdata = [
           path: '/api/peer'
         },
         {
+          name: 'getCirculatingSupply',
+          info: 'Returns circulating supply information.',
+          path: '/api/circulating_supply'
+        },
+        {
+          name: 'getTotalSupply',
+          info: 'Returns total supply information.',
+          path: '/api/total_supply'
+        },
+        {
           name: 'getSupply',
           info: 'Returns circulating and total supply information.<br />https://github.com/coincheckup/crypto-supplies',
           path: '/api/supply'
